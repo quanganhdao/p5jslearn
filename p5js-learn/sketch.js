@@ -1,8 +1,9 @@
 let outro=[]
-
+let isButtonCreated=false;
 function preload(){
 firework = loadImage("assets/firework.png")
 example = loadImage("assets/knight.png")
+brush = loadImage("assets/brush.png")
 }
 
 function setup(){
@@ -14,8 +15,6 @@ function setup(){
 
 function draw(){
 	background(200)
-
-
 	fill(255,0,0)
 	noStroke()
 	rect(20,20,40,20)
@@ -30,8 +29,19 @@ function playOutro(){
 	outro[1].play()
 	outro[2].play()
 
+	if(isButtonCreated==false){
+		const button = document.createElement("button");
+		button.innerHTML = "Continue";
+		button.className="button"
+		button.onclick="window.open('https://p5js.org/reference/')";
+		document.getElementById("container").appendChild(button);
+		isButtonCreated =true;
+	}
+
 
 }
+
+
 
 class Outro {
 	constructor(x,y,image,speed){
